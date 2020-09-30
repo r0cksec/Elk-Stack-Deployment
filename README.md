@@ -2,13 +2,14 @@
 
 The files in this repository were used to configure the network depicted below.
 
-**Note**: The following image link needs to be updated. Replace `diagram_filename.png` with the name of your diagram image file.  
 
 ![Virtual Network](https://github.com/r0cksec/Elk-Stack-Deployment/blob/master/Diagrams/ELK-Connection.jpg)
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the __.yml__ file may be used to install only certain pieces of it, such as Filebeat.
 
-  - _TODO: Enter the playbook file._
+  - ![Deploy Elk](https://github.com/r0cksec/Elk-Stack-Deployment/blob/master/Ansible/install-elk-playbook.yml)
+  - ![Install Filebeat](https://github.com/r0cksec/Elk-Stack-Deployment/blob/master/Ansible/Filebeat/filebeat-playbook.yml)
+  - ![Install Metricbeat](https://github.com/r0cksec/Elk-Stack-Deployment/blob/master/Ansible/Metricbeat/metricbeat-playbook.yml)
 
 This document contains the following details:
 - Description of the Topology
@@ -24,14 +25,13 @@ This document contains the following details:
 The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the D*mn Vulnerable Web Application.
 
 Load balancing ensures that the application will be highly __accessible__, in addition to restricting __the amount of traffic__ to the network.
-- Load balancers protect the accessibilty of security. The advantage of a jump-box is that the only users that can access the servers are the users that have access to the jumpbox.  
+- Load balancers protect the aspect of accessibilty in security. The advantage of a jump-box is that the only users that can access the servers are the users that have access to the jumpbox.  
 
-Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the _____ and system _____.
+Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the file system and system metrics.
 - Filebeat watches for changes in files and generates logs on the file system.  
-- Metricbeat records system metrics like uptime. 
+- Metricbeat records system metrics like uptime, CPU Usage, etc.  
 
 The configuration details of each machine may be found below.
-_Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table_.
 
 | Name     | Function       | IP Address | Operating System     |
 |----------|----------------|------------|----------------------|
@@ -46,10 +46,10 @@ _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdow
 The machines on the internal network are not exposed to the public Internet. 
 
 Only the Jumpbox machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
-- _TODO: 24.224.10.137
+-24.224.10.137 (Home-IP)
 
 Machines within the network can only be accessed by accessing the jumpbox.
-- _TODO:I Allowed my Jumpbox to SSH into the ELK VM if in the ansible container. 40.78.28.127
+- I Allowed my Jumpbox to SSH into the ELK VM if in the ansible container. 40.78.28.127
 
 A summary of the access policies in place can be found in the table below.
 
@@ -59,11 +59,11 @@ A summary of the access policies in place can be found in the table below.
 | Web 1    | No                  | 10.0.0.4                         |
 | Web 2    | No                  | 10.0.0.4                         |
 | Web 3    | No                  | 10.0.0.4                         |
-| Elk-VM   | Yes                 | 10.0.0.4 24.244.10.137 (Home-IP) |
+| Elk-VM   | Yes                 | 10.0.0.4 24.244.10.137 (Home-IP)
 ### Elk Configuration
 
 Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because...
-- _TODO: Automating configurations with Ansible allows for quick and easy deployment. 
+- Automating configurations with Ansible allows for quick and easy deployment.  
 
 The playbook implements the following tasks:
 - Install docker-io with the apt module
@@ -74,10 +74,8 @@ The playbook implements the following tasks:
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
-**Note**: The following image link needs to be updated. Replace `docker_ps_output.png` with the name of your screenshot image file.  
 
-
-![TODO: Update the path with the name of your screenshot of docker ps output](Images/docker_ps_output.png)
+![Docker Container Status](https://github.com/r0cksec/Elk-Stack-Deployment/blob/master/Images/ELKContainer.PNG)
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
@@ -132,4 +130,4 @@ _TODO: Answer the following questions to fill in the blanks:_
 - _Which URL do you navigate to in order to check that the ELK server is running?
   - http://[Your-Elk-Machine-VM]:5601/app/kibana
 
-_As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
+
