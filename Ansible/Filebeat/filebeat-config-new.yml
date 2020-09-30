@@ -1,0 +1,46 @@
+filebeat.config.modules:
+  path: ${path.config}/modules.d/*.yml
+filebeat.modules:
+- module: elasticsearch
+  server:
+    enabled: true
+  gc:
+    enabled: true
+  audit:
+    enabled: true
+  slowlog:
+    enabled: true
+  deprecation:
+    enabled: true
+- module: haproxy
+  log:
+    enabled: true
+- module: kafka
+  log:
+    enabled: true
+- module: kibana
+  log:
+    enabled: true
+- module: nats
+  log:
+    enabled: true
+- module: osquery
+  result:
+    enabled: true
+- module: santa
+  log:
+    enabled: true
+filebeat.inputs:
+- type: log
+  enabled: false
+  paths:
+    - /var/log/*.log
+output.elasticsearch:
+  hosts: ["10.1.0.4:9200"]
+  username: "elastic"
+  password: "changeme"
+setup.template.settings:
+setup.kibana:
+  host: "10.1.0.4:5601"
+logging.to_files: true
+logging.files:
