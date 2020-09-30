@@ -122,7 +122,6 @@ SSH into the control node and follow the steps below:
   ```
 - Run the playbook, and navigate to the Metricbeat installation page on the ELK server GUI to check that the installation worked as expected by clicking the check data button
 
-_TODO: Answer the following questions to fill in the blanks:_
 - _Which file is the playbook? Where do you copy it?_
   - There are three playbooks, they are filebeat-playbook.yml, metricbeat-playbook.yml, and install-elk.yml. The playbooks should be located in /etc/ansible/roles
 - _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_
